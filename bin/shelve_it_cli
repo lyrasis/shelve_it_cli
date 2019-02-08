@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+
+from shelve_it_cli import ShelveItCLI
+import fire
+
+fire.Fire(ShelveItCLI)

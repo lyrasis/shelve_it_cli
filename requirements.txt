@@ -1,0 +1,2 @@
+ArchivesSnake==0.7.3
+fire==0.1.3
