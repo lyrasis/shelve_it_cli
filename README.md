@@ -7,7 +7,7 @@ Python module for assigning containers to locations in ArchivesSpace.
 Create a basic configuration file with these settings:
 
 ```yml
-base_url: http://test.archivesspace.org/staff/api
+base_url: http://localhost:4567
 username: admin
 password: admin
 ```
