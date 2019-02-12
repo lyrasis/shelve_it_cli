@@ -42,9 +42,14 @@ shelve_it_cli process --config=/path/to/config.yml --data=/path/to/import.csv
 ## Developer setup
 
 ```txt
+# install system wide for editors (optional)
+pip3 install ArchivesSnake fire
+# install within virtualenv
 virtualenv venv --python=python3
 source venv/bin/activate
 pip3 install -r requirements.txt
+
+# commands
 python shelve_it_cli/shelve_it_cli.py ping --config config.test.yml
 python shelve_it_cli/shelve_it_cli.py process --config config.test.yml --data barcodes.csv
 ```
