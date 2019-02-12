@@ -24,13 +24,13 @@ class ShelveItCLI(object):
       for row in csv_reader:
         if line_count == 0:
           pass
+        line_count += 1
         rc = row["repo_code"]
         cb = row["container_barcode"]
         lb = row["location_barcode"]
         print(f'Processing: respository [{rc}], container [{cb}], location [{lb}]')
-        self.service.handle(rc, cb, lb)
-        line_count += 1
-    return 'Done!'
+        self.service.handle(line_count, rc, cb, lb)
+    return None
 
   def __read_config(self, config):
     with open(config, 'r') as cfg:
