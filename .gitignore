@@ -9,4 +9,4 @@
 
 .vscode/
 venv/
-config.test.yml
+config.yml

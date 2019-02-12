@@ -22,13 +22,15 @@ Test the connection to ArchivesSpace:
 
 ```bash
 shelve_it_cli ping --config=/path/to/config.yml
+# test config for devs running the backend locally
+shelve_it_cli ping --config=config.test.yml
 ```
 
 Create a CSV containing two columns with data to import. For example:
 
 ```txt
-container_barcode,location_barcode
-123456,987654
+repo_code,container_barcode,location_barcode
+test,123456,987654
 ```
 
 Run the command to import it:
