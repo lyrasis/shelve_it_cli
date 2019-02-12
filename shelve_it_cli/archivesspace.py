@@ -19,6 +19,7 @@ class ArchivesSpace(object):
     try:
       self.reset_client()
       self.client.authorize()
+      print('Login OK!')
     except Exception as ex:
       print(ex)
 
