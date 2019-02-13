@@ -1,6 +1,6 @@
 # Shelve It CLI
 
-Module for assigning containers to locations in ArchivesSpace.
+Assigning containers to locations in ArchivesSpace.
 
 ## Requirements
 
