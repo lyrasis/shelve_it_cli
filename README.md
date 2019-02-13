@@ -41,7 +41,7 @@ test,123456,987654
 Run the command to import it:
 
 ```bash
-shelve_it_cli process --config=/path/to/config.yml --data=/path/to/import.csv
+shelve_it_cli process --config=/path/to/config.yml --data=/path/to/import.csv --output=/path/to/result.csv
 ```
 
 ## Developer setup
@@ -56,5 +56,5 @@ pip3 install -r requirements.txt
 
 # commands
 python shelve_it_cli/shelve_it_cli.py ping --config config.test.yml
-python shelve_it_cli/shelve_it_cli.py process --config config.test.yml --data barcodes.csv
+python shelve_it_cli/shelve_it_cli.py process --config config.test.yml --data barcodes.csv --output=result.csv
 ```

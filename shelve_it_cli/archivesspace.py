@@ -47,9 +47,9 @@ class ArchivesSpace(object):
         print(f'Failed to update: {repo_code}, {container_barcode}, {location_barcode}')
 
     self.results.append({
+      'row': line_count,
       'container_barcode': container_barcode,
       'container_uri': container_uri,
-      'line_count': line_count,
       'location_barcode': location_barcode,
       'location_uri': location_uri,
       'repo_code': repo_code,

@@ -1,0 +1,2 @@
+row,container_barcode,container_uri,location_barcode,location_uri,repo_code,repository_uri,status
+1,123456,/repositories/2/top_containers/1,987654,/locations/1,test,/repositories/2,success
