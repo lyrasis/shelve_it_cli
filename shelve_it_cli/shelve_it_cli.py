@@ -1,5 +1,6 @@
 from archivesspace import ArchivesSpace
 from pathlib import Path
+from time import sleep
 import csv
 import fire
 import yaml
@@ -10,11 +11,13 @@ class ShelveItCLI(object):
   def __init__(self):
     self.service = ArchivesSpace()
 
+
   def ping(self, config):
     print('Attempting to login to ArchivesSpace')
     self.service.config = self.__read_config(config)
     self.service.reset_client()
     self.service.ping()
+
 
   def process(self, data, config):
     self.service.config = self.__read_config(config)
@@ -32,10 +35,18 @@ class ShelveItCLI(object):
         lb = row["location_barcode"]
         print(f'Processing: respository [{rc}], container [{cb}], location [{lb}]')
         self.service.handle(line_count, rc, cb, lb)
+        sleep(0.05)
+    self.__process_results()
     return None
+
 
   def __check_file(self, file):
     Path(file).resolve(strict=True)
+
+
+  def __process_results(self):
+    print(self.service.results)
+
 
   def __read_config(self, config):
     self.__check_file(config)
@@ -46,6 +57,7 @@ class ShelveItCLI(object):
       'username': parsed_cfg['username'],
       'password': parsed_cfg['password']
     }
+
 
 if __name__ == '__main__':
   fire.Fire(ShelveItCLI)
