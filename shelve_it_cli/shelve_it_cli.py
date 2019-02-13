@@ -12,7 +12,6 @@ class ShelveItCLI(object):
 
   def ping(self, config):
     print('Attempting to login to ArchivesSpace')
-
     self.service.config = self.__read_config(config)
     self.service.reset_client()
     self.service.ping()
