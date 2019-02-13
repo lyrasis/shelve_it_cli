@@ -2,12 +2,17 @@
 
 Python module for assigning containers to locations in ArchivesSpace.
 
+## Requirements
+
+This module requires the [shelve_it](https://github.com/lyrasis/shelve_it.git) plugin to be enabled
+for ArchivesSpace.
+
 ## Usage
 
 Create a basic configuration file with these settings:
 
 ```yml
-base_url: http://localhost:4567
+base_url: http://localhost:4567 # update to your api url
 username: admin
 password: admin
 ```
