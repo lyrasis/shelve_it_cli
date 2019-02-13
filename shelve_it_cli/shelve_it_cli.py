@@ -1,4 +1,4 @@
-from archivesspace import ArchivesSpace
+from shelve_it_cli import ArchivesSpace
 from pathlib import Path
 from time import sleep
 import csv
