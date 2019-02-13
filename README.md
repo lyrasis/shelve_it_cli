@@ -1,6 +1,6 @@
 # Shelve It CLI
 
-Python module for assigning containers to locations in ArchivesSpace.
+Module for assigning containers to locations in ArchivesSpace.
 
 ## Requirements
 
@@ -57,4 +57,8 @@ pip3 install -r requirements.txt
 # commands
 python shelve_it_cli/shelve_it_cli.py ping --config config.test.yml
 python shelve_it_cli/shelve_it_cli.py process --config config.test.yml --data barcodes.csv --output=result.csv
+
+# test install
+pip3 install .
+pip3 uninstall shelve_it_cli
 ```
