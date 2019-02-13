@@ -1,4 +1,5 @@
 from archivesspace import ArchivesSpace
+from pathlib import Path
 import csv
 import fire
 import yaml
@@ -11,6 +12,7 @@ class ShelveItCLI(object):
 
   def ping(self, config):
     print('Attempting to login to ArchivesSpace')
+
     self.service.config = self.__read_config(config)
     self.service.reset_client()
     self.service.ping()
@@ -18,6 +20,7 @@ class ShelveItCLI(object):
   def process(self, data, config):
     self.service.config = self.__read_config(config)
     self.service.reset_client()
+    self.__check_file(data)
     with open(data, mode='r') as dt:
       csv_reader = csv.DictReader(dt)
       line_count = 0
@@ -32,7 +35,11 @@ class ShelveItCLI(object):
         self.service.handle(line_count, rc, cb, lb)
     return None
 
+  def __check_file(self, file):
+    Path(file).resolve(strict=True)
+
   def __read_config(self, config):
+    self.__check_file(config)
     with open(config, 'r') as cfg:
       parsed_cfg = yaml.load(cfg)
     return {
