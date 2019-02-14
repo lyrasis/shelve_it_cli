@@ -6,7 +6,7 @@ class ArchivesSpace(object):
     UPDATE_STATUS_SUCCESS = 'success'
 
     def __init__(self, config={}):
-        self.client = None
+        self.client = ASnakeClient()
         self.config = config
         self.containers = {}
         self.locations = {}
@@ -17,21 +17,21 @@ class ArchivesSpace(object):
         status = self.UPDATE_STATUS_FAILED  # default
         repo_uri = None
         try:
-            self.__repo_uri_from_code(repo_code)
+            self.repo_uri_from_code(repo_code)
             repo_uri = self.repositories[repo_code]
         except Exception:
             print(f'Failed repository code: {repo_code} [{line_count}]')
 
         con_uri = None
         try:
-            self.__con_uri_from_barcode(repo_uri, con_barcode)
+            self.con_uri_from_barcode(repo_uri, con_barcode)
             con_uri = self.containers[con_barcode]
         except Exception:
             print(f'Failed container barcode: {con_barcode} [{line_count}]')
 
         loc_uri = None
         try:
-            self.__loc_uri_from_barcode(loc_barcode)
+            self.loc_uri_from_barcode(loc_barcode)
             loc_uri = self.locations[loc_barcode]
         except Exception:
             print(f'Failed location barcode: {loc_barcode} [{line_count}]')
@@ -72,19 +72,19 @@ class ArchivesSpace(object):
             password=self.config['password'],
         )
 
-    def __con_uri_from_barcode(self, repo_uri, barcode):
+    def con_uri_from_barcode(self, repo_uri, barcode):
         if barcode not in self.containers:
             path = 'top_containers/by_barcode'
             uri = self.client.get(f'{repo_uri}/{path}/{barcode}').json()['uri']
             self.containers[barcode] = uri
 
-    def __loc_uri_from_barcode(self, barcode):
+    def loc_uri_from_barcode(self, barcode):
         if barcode not in self.locations:
             path = 'locations/by_barcode'
             uri = self.client.get(f'/{path}/{barcode}').json()['uri']
             self.locations[barcode] = uri
 
-    def __repo_uri_from_code(self, repo_code):
+    def repo_uri_from_code(self, repo_code):
         if repo_code not in self.repositories:
             path = 'repositories/by_repo_code'
             uri = self.client.get(f'/{path}/{repo_code}').json()['uri']
