@@ -1,3 +1,4 @@
 ArchivesSnake==0.7.3
 fire==0.1.3
 pep8==1.7.1
+responses==0.10.5
