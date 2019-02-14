@@ -57,7 +57,3 @@ class ShelveItCLI(object):
             'username': parsed_cfg['username'],
             'password': parsed_cfg['password']
         }
-
-
-if __name__ == '__main__':
-    fire.Fire(ShelveItCLI)

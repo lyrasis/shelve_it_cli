@@ -55,8 +55,8 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 
 # commands
-python shelve_it_cli/shelve_it_cli.py ping --config config.test.yml
-python shelve_it_cli/shelve_it_cli.py process --config config.test.yml --data barcodes.csv --output=result.csv
+python shelve_it_cli.py ping --config config.test.yml
+python shelve_it_cli.py process --config config.test.yml --data barcodes.csv --output result.csv
 
 # test install
 pip3 install .
