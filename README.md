@@ -7,6 +7,12 @@ Assigning containers to locations in ArchivesSpace.
 This module requires the [shelve_it](https://github.com/lyrasis/shelve_it.git) plugin to be enabled
 for ArchivesSpace.
 
+Shelve It CLI is a Python module and can be installed using pip:
+
+```bash
+pip3 install shelve_it_cli
+```
+
 ## Usage
 
 Create a basic configuration file with these settings:
