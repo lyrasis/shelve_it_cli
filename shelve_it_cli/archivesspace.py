@@ -62,7 +62,7 @@ class ArchivesSpace(object):
                 uri = self.client.get(path).json()['uri']
                 self.containers[barcode] = uri
         except Exception:
-            print(f'Failed container barcode: {barcode}')
+            print(f'Container not found: {barcode}')
         return self.containers.get(barcode, None)
 
     def loc_uri_from_barcode(self, barcode):
@@ -72,7 +72,7 @@ class ArchivesSpace(object):
                 uri = self.client.get(path).json()['uri']
                 self.locations[barcode] = uri
         except Exception:
-            print(f'Failed location barcode: {barcode}')
+            print(f'Location not found: {barcode}')
         return self.locations.get(barcode, None)
 
     def repo_uri_from_code(self, repo_code):
@@ -82,5 +82,5 @@ class ArchivesSpace(object):
                 uri = self.client.get(path).json()['uri']
                 self.repositories[repo_code] = uri
         except Exception:
-            print(f'Failed repository code: {repo_code}')
+            print(f'Repository not found: {repo_code}')
         return self.repositories.get(repo_code, None)
