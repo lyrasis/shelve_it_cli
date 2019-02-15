@@ -17,8 +17,8 @@ class TestArchivesSpace(unittest.TestCase):
             json={'uri': uri},
             status=200
         )
-        service.con_uri_from_barcode('/repositories/2', barcode)
-        self.assertEqual(service.containers[barcode], uri)
+        result = service.con_uri_from_barcode('/repositories/2', barcode)
+        self.assertEqual(uri, result)
 
     @responses.activate
     def test_loc_uri_from_barcode_success(self):
@@ -32,8 +32,22 @@ class TestArchivesSpace(unittest.TestCase):
             json={'uri': uri},
             status=200
         )
+        result = service.loc_uri_from_barcode(barcode)
+        self.assertEqual(uri, result)
+
+    @responses.activate
+    def test_loc_uri_from_barcode_not_found(self):
+        service = ArchivesSpace()
+        barcode = '987654'
+        request_path = f'/locations/by_barcode/{barcode}'
+        responses.add(
+            responses.GET,
+            service.client.config['baseurl'] + request_path,
+            json={'error': 'Location not found'},
+            status=404
+        )
         service.loc_uri_from_barcode(barcode)
-        self.assertEqual(service.locations[barcode], uri)
+        self.assertEqual(service.locations.get(barcode), None)
 
     @responses.activate
     def test_repo_uri_from_code_success(self):
@@ -47,5 +61,5 @@ class TestArchivesSpace(unittest.TestCase):
             json={'uri': uri},
             status=200
         )
-        service.repo_uri_from_code(repo_code)
-        self.assertEqual(service.repositories[repo_code], uri)
+        result = service.repo_uri_from_code(repo_code)
+        self.assertEqual(uri, result)
