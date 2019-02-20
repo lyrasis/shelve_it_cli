@@ -65,7 +65,7 @@ python shelve_it_cli.py ping --config config.test.yml
 python shelve_it_cli.py process --config config.test.yml --data barcodes.csv --output result.csv
 
 # test install
-python -m unittest
+python -m unittest discover
 pip3 install .
 pip3 uninstall shelve_it_cli
 ```
