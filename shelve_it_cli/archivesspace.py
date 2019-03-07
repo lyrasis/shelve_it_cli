@@ -1,3 +1,4 @@
+import urllib.parse
 from asnake.client import ASnakeClient
 
 
@@ -58,7 +59,7 @@ class ArchivesSpace(object):
     def con_uri_from_barcode(self, repo_uri, barcode):
         try:
             if barcode not in self.containers:
-                path = f'{repo_uri}/top_containers/by_barcode/{barcode}'
+                path = f'{repo_uri}/top_containers/by_barcode/{self.quote(barcode)}'  # noqa
                 uri = self.client.get(path).json()['uri']
                 self.containers[barcode] = uri
         except Exception:
@@ -68,17 +69,20 @@ class ArchivesSpace(object):
     def loc_uri_from_barcode(self, barcode):
         try:
             if barcode not in self.locations:
-                path = f'/locations/by_barcode/{barcode}'
+                path = f'/locations/by_barcode/{self.quote(barcode)}'
                 uri = self.client.get(path).json()['uri']
                 self.locations[barcode] = uri
         except Exception:
             print(f'Location not found: {barcode}')
         return self.locations.get(barcode, None)
 
+    def quote(self, parameter):
+        return urllib.parse.quote(parameter)
+
     def repo_uri_from_code(self, repo_code):
         try:
             if repo_code not in self.repositories:
-                path = f'/repositories/by_repo_code/{repo_code}'
+                path = f'/repositories/by_repo_code/{self.quote(repo_code)}'
                 uri = self.client.get(path).json()['uri']
                 self.repositories[repo_code] = uri
         except Exception:
