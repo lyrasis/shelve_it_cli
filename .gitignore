@@ -8,5 +8,6 @@
 /*.egg-info
 
 .vscode/
+build/
 venv/
 config.yml

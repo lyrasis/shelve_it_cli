@@ -69,3 +69,12 @@ python -m unittest discover
 pip3 install .
 pip3 uninstall shelve_it_cli
 ```
+
+## Publishing
+
+```txt
+pip3 install twine
+python3 setup.py sdist bdist_wheel
+twine check dist/*
+twine upload dist/*
+```
