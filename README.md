@@ -37,7 +37,7 @@ shelve_it_cli ping --config=/path/to/config.yml
 shelve_it_cli ping --config=config.test.yml
 ```
 
-Create a CSV containing two columns with data to import. For example:
+Create a CSV containing three columns with data to import. For example:
 
 ```txt
 repo_code,container_barcode,location_barcode
